@@ -1,0 +1,14 @@
+# Default owner for everything
+*                                   @sarajamal
+
+# Per-service owners (update when new developers join)
+/src/ProductCatalogApi/             @sarajamal
+/src/product-catalog-client/        @sarajamal
+/src/McpServer/                     @sarajamal
+/services/ProductCatalogApi/        @sarajamal
+/services/McpServer/                @sarajamal
+
+# Repository rules and standards
+/standards/                         @sarajamal
+/.github/                           @sarajamal
+/kb.json                            @sarajamal

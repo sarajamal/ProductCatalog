@@ -1,0 +1,35 @@
+<div class="product-list">
+  <div class="list-header">
+    <h2>المنتجات</h2>
+    <button type="button" (click)="load()">تحديث</button>
+  </div>
+
+  <p *ngIf="loading">جارِ التحميل...</p>
+  <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+  <table *ngIf="!loading && products.length">
+    <thead>
+      <tr>
+        <th>المنتج</th>
+        <th>الفئة</th>
+        <th>السعر</th>
+        <th>المخزون</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of products">
+        <td>{{ p.productName }}</td>
+        <td>{{ p.category?.categoryName || ('#' + p.categoryId) }}</td>
+        <td>{{ p.price | number: '1.2-2' }}</td>
+        <td>{{ p.stock }}</td>
+        <td class="actions">
+          <button type="button" (click)="onEdit(p)">تعديل</button>
+          <button type="button" class="danger" (click)="onDelete(p)">حذف</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="!loading && !products.length && !errorMessage">لا توجد منتجات بعد. أضيفي أول منتج من الأعلى.</p>
+</div>

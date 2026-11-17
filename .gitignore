@@ -1,0 +1,29 @@
+# ---- .NET ----
+bin/
+obj/
+*.user
+*.suo
+*.rsuser
+.vs/
+TestResults/
+*.trx
+appsettings.*.local.json
+secrets.json
+
+# ---- Node / Angular ----
+node_modules/
+.angular/
+dist/
+coverage/
+npm-debug.log*
+yarn-error.log*
+
+# ---- Editors / OS ----
+.idea/
+*.swp
+Thumbs.db
+.DS_Store
+Desktop.ini
+
+# ---- Local backups ----
+.backup/

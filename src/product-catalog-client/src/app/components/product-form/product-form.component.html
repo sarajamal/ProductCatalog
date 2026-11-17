@@ -1,0 +1,51 @@
+<div class="product-form">
+  <h2>{{ isEditing ? 'تعديل منتج' : 'إضافة منتج جديد' }}</h2>
+
+  <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+  <form (ngSubmit)="save()" #f="ngForm" novalidate>
+    <label>
+      <span>اسم المنتج <span class="required">*</span></span>
+      <input type="text" name="productName" [(ngModel)]="model.productName" #productName="ngModel" required />
+      <small class="error" *ngIf="productName.invalid && productName.touched">
+        يجب إضافة اسم المنتج
+      </small>
+    </label>
+
+    <label>
+      <span>السعر <span class="required">*</span></span>
+      <input type="number" name="price" [(ngModel)]="model.price" #price="ngModel"
+             required [min]="isEditing ? 0 : 0.01" step="0.01" />
+      <ng-container *ngIf="price.invalid && price.touched">
+        <small class="error" *ngIf="price.errors?.['required']">يجب إضافة السعر</small>
+        <small class="error" *ngIf="price.errors?.['min']">السعر لازم يكون أكبر من 0</small>
+      </ng-container>
+    </label>
+
+    <label>
+      <span>المخزون <span class="required">*</span></span>
+      <input type="number" name="stock" [(ngModel)]="model.stock" #stock="ngModel"
+             required [min]="isEditing ? 0 : 1" step="1" />
+      <ng-container *ngIf="stock.invalid && stock.touched">
+        <small class="error" *ngIf="stock.errors?.['required']">يجب إضافة المخزون</small>
+        <small class="error" *ngIf="stock.errors?.['min']">المخزون لازم يكون أكبر من 0</small>
+      </ng-container>
+    </label>
+
+    <label>
+      <span>الفئة <span class="required">*</span></span>
+      <select name="categoryId" [(ngModel)]="model.categoryId" #category="ngModel" required>
+        <option [ngValue]="null" disabled>اختر الفئة المناسبة</option>
+        <option *ngFor="let c of categories" [ngValue]="c.categoryId">{{ c.categoryName }}</option>
+      </select>
+      <small class="error" *ngIf="category.invalid && category.touched">
+        يجب اختيار الفئة
+      </small>
+    </label>
+
+    <div class="form-actions">
+      <button type="submit">{{ isEditing ? 'حفظ' : 'إضافة' }}</button>
+      <button type="button" (click)="cancel()">إلغاء</button>
+    </div>
+  </form>
+</div>

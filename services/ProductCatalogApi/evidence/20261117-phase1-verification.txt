@@ -1,0 +1,14 @@
+Phase 1 verification — 2026-11-17
+
+QA-01 Angular build (clean copy of src/product-catalog-client, npm ci, ng build --configuration development)
+  Result: PASS — "Application bundle generation complete", main.js 1.30 MB, polyfills 90.20 kB.
+  Note: the production build in the verification sandbox stopped at font inlining
+  (fonts.googleapis.com blocked by the sandbox network) — an environment limit, not a code error.
+  Run `npm run build` locally to confirm the production build.
+
+QA-02 .NET build: NOT RUN in sandbox (.NET SDK download and nuget.org blocked).
+  To run locally: dotnet build ProductCatalog.sln
+
+QA-04 scripts/*.bat line endings: PASS — all four files "with CRLF line terminators".
+QA-05 Secrets: PASS — appsettings.json DefaultConnection is empty; example file uses placeholders.
+kb.json: PASS — valid JSON.
