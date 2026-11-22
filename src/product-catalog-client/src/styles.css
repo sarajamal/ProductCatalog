@@ -8,6 +8,7 @@ body {
   min-height: 100vh;
   font-family: 'Cairo', 'Segoe UI', Tahoma, Arial, sans-serif;
   color: #1f2430;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 45%, #6b46c1 100%);
+  /* Lighter gradient (about 30% closer to white than the original #667eea → #764ba2 → #6b46c1) */
+  background: linear-gradient(135deg, #94a5f0 0%, #9981be 45%, #917dd4 100%);
   background-attachment: fixed;
 }
