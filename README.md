@@ -55,6 +55,7 @@ See `src/ProductCatalogApi/appsettings.Development.example.json` for the expecte
 | `scripts\start-api.bat` | API only |
 | `scripts\open-in-chrome.bat` | Opens http://localhost:4200 |
 | `scripts\open-in-vscode.bat` | Opens the repo root in VS Code |
+| `scripts\run-tests.bat` | Runs the Angular unit tests; Karma opens Chrome with the results |
 
 - API: http://localhost:5233 — Swagger: http://localhost:5233/swagger
 - Client: http://localhost:4200
