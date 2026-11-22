@@ -8,3 +8,4 @@
 | ENH-004 | Low | Paging (`page`, `pageSize`) on list endpoints | Scales with data | — | Idea |
 | ENH-005 | Low | Move API base URL in Angular to `environment.ts` | One place to change URLs | — | Idea |
 | ENH-006 | Low | Categories CRUD | Manage categories from UI | — | Idea |
+| ENH-007 | Low | Unit tests for `isLowStock()` and stock sorting in `ProductListComponent` | Locks the low-stock rule (threshold 20) in a test | Phase 5 | Idea |

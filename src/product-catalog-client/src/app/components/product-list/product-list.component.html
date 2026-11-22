@@ -7,6 +7,10 @@
   <p *ngIf="loading">جارِ التحميل...</p>
   <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
 
+  <p class="low-stock-alert" *ngIf="!loading && lowStockCount > 0">
+    ⚠ {{ lowStockCount }} منتج مخزونه أقل من {{ lowStockThreshold }}، يحتاج إعادة تعبئة.
+  </p>
+
   <table *ngIf="!loading && products.length">
     <thead>
       <tr>
@@ -18,11 +22,14 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let p of products">
+      <tr *ngFor="let p of products" [class.low-stock]="isLowStock(p)">
         <td>{{ p.productName }}</td>
         <td>{{ p.category?.categoryName || ('#' + p.categoryId) }}</td>
         <td>{{ p.price | number: '1.2-2' }}</td>
-        <td>{{ p.stock }}</td>
+        <td class="stock-cell">
+          {{ p.stock }}
+          <span class="low-stock-badge" *ngIf="isLowStock(p)">مخزون منخفض</span>
+        </td>
         <td class="actions">
           <button type="button" (click)="onEdit(p)">تعديل</button>
           <button type="button" class="danger" (click)="onDelete(p)">حذف</button>
