@@ -16,6 +16,14 @@
 |---|---|---|---|---|
 | QA-06 | Page background gradient is lighter; title and cards still readable | Lighter purple/blue gradient, white title readable | Pass — verified in Chrome at http://localhost:4200 | evidence/20261117-QA-06-lighter-background.jpg |
 
+## Client — sort by stock + low-stock alert (2026-11-22, branch `feature/client-stock-sort-low-alert`)
+
+| ID | Case | Expected | Result | Evidence |
+|---|---|---|---|---|
+| QA-07 | Product list is sorted by stock, lowest first | Rows ordered 40, 60, 65, 66, 77, 97, 206 with the current data | Pass — verified in Chrome at http://localhost:4200 | — |
+| QA-08 | Products with stock below 20 are highlighted | Red row, red stock number, "مخزون منخفض" badge, alert line with the count | Pass — no real product is below 20, so two stock values were changed in the browser only (nothing saved) to preview: 2 rows red, alert "2 منتج" | evidence/20261122-QA-07-low-stock-sort.jpg |
+| QA-09 | Angular compiles | `ng build --configuration development` succeeds | Pass (clean copy, npm ci) | — |
+
 ## Regression checklist (run after any API change)
 - [ ] `GET /api/products` returns list with categories
 - [ ] `POST /api/products` with price 0 → 400 with `Price` error

@@ -119,3 +119,40 @@ button.danger {
 p {
   color: #555;
 }
+
+/* Low stock (below LOW_STOCK_THRESHOLD in the component) */
+.low-stock-alert {
+  margin: 0 0 14px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: #fdecea;
+  border: 1px solid #f3c0bd;
+  color: #b3261e;
+  font-weight: 600;
+}
+
+tbody tr.low-stock {
+  background: #fff4f3;
+}
+
+tbody tr.low-stock:hover {
+  background: #fde7e5;
+}
+
+tr.low-stock .stock-cell {
+  color: #b3261e;
+  font-weight: 700;
+}
+
+.low-stock-badge {
+  display: inline-block;
+  margin-inline-start: 8px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #fdecea;
+  border: 1px solid #f3c0bd;
+  color: #b3261e;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  font-weight: 600;
+}

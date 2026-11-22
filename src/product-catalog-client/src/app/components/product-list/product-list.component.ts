@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 import { Product } from '../../models/product.model';
 import { ProductService } from '../../services/product.service';
 
+// Products with stock below this number are shown as low stock
+export const LOW_STOCK_THRESHOLD = 20;
+
 @Component({
   selector: 'app-product-list',
   standalone: true,
@@ -14,6 +17,7 @@ export class ProductListComponent implements OnInit {
   products: Product[] = [];
   loading = false;
   errorMessage = '';
+  readonly lowStockThreshold = LOW_STOCK_THRESHOLD;
 
   @Output() edit = new EventEmitter<Product>();
 
@@ -28,7 +32,8 @@ export class ProductListComponent implements OnInit {
     this.errorMessage = '';
     this.productService.getAll().subscribe({
       next: (data) => {
-        this.products = data;
+        // Lowest stock first, so products that need restocking appear at the top
+        this.products = [...data].sort((a, b) => a.stock - b.stock);
         this.loading = false;
       },
       error: () => {
@@ -36,6 +41,14 @@ export class ProductListComponent implements OnInit {
         this.loading = false;
       }
     });
+  }
+
+  isLowStock(product: Product): boolean {
+    return product.stock < this.lowStockThreshold;
+  }
+
+  get lowStockCount(): number {
+    return this.products.filter((p) => this.isLowStock(p)).length;
   }
 
   onEdit(product: Product): void {
