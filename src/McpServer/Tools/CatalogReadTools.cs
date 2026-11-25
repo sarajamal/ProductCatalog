@@ -39,17 +39,45 @@ public static class CatalogReadTools
                 : Serialize(ToView(product));
         });
 
-    [McpServerTool(Name = "get_products_by_category"), Description("Lists the products in one category, by category id. Use list_categories to find the id.")]
+    [McpServerTool(Name = "get_products_by_category"),
+     Description("Lists products by category. Give a category id or name (for example 1 or Books) to get one category, " +
+                 "or leave it empty to get every category with its products.")]
     public static Task<string> GetProductsByCategory(
         ProductCatalogClient api,
-        [Description("The category id, for example 1.")] int categoryId,
-        CancellationToken ct) =>
+        [Description("Category id or name, for example 1 or Books. Leave empty for all categories.")] string? category = null,
+        CancellationToken ct = default) =>
         Run(api, async () =>
         {
-            var products = (await api.GetProductsAsync(ct)).Where(p => p.CategoryId == categoryId).ToList();
-            return products.Count == 0
-                ? $"No products found in category {categoryId}."
-                : Serialize(products.OrderBy(p => p.Stock).Select(ToView));
+            var categories = await api.GetCategoriesAsync(ct);
+            var products = await api.GetProductsAsync(ct);
+
+            // No category given: every category with its products
+            if (string.IsNullOrWhiteSpace(category))
+            {
+                return Serialize(categories.Select(c => new
+                {
+                    c.CategoryId,
+                    c.CategoryName,
+                    Products = products.Where(p => p.CategoryId == c.CategoryId).OrderBy(p => p.Stock).Select(ToView)
+                }));
+            }
+
+            // One category, by id or by name
+            var text = category.Trim();
+            var match = int.TryParse(text, out var id)
+                ? categories.FirstOrDefault(c => c.CategoryId == id)
+                : categories.FirstOrDefault(c => string.Equals(c.CategoryName, text, StringComparison.OrdinalIgnoreCase));
+
+            if (match is null)
+            {
+                var available = string.Join(", ", categories.Select(c => $"{c.CategoryId} {c.CategoryName}"));
+                return $"Category '{text}' does not exist. Available categories: {available}.";
+            }
+
+            var inCategory = products.Where(p => p.CategoryId == match.CategoryId).OrderBy(p => p.Stock).Select(ToView).ToList();
+            return inCategory.Count == 0
+                ? $"Category {match.CategoryId} {match.CategoryName} exists but has no products."
+                : Serialize(new { match.CategoryId, match.CategoryName, Products = inCategory });
         });
 
     [McpServerTool(Name = "search_products"), Description("Searches products whose name contains the given text (case-insensitive).")]

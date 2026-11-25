@@ -112,7 +112,7 @@ public static Task<string> ListProducts(ProductCatalogClient api, CancellationTo
 | `list_categories` | — | كل الفئات | Electronics, Books, Clothing |
 | `list_products` | — | كل المنتجات، من الأقل مخزون | Mechanical Keyboard (16) أول وحدة |
 | `get_product` | `productId` (رقم) | منتج واحد، أو "No product found" | `2` ← Mechanical Keyboard |
-| `get_products_by_category` | `categoryId` (رقم) | منتجات فئة وحدة | `2` ← كتب |
+| `get_products_by_category` | `category` (رقم أو اسم، اختياري) | فاضي ← كل الفئات ومنتجاتها. رقم أو اسم ← فئة وحدة. غير موجود ← قائمة الفئات الموجودة | `Books` أو `2` ← كتب. `4` ← "does not exist" |
 | `search_products` | `query` (نص) | المنتجات اللي اسمها فيه النص | `key` ← Mechanical Keyboard |
 
 **إذا الـ API طافي:** الأداة ما تنهار، ترجع رسالة واضحة:
@@ -226,6 +226,7 @@ http://127.0.0.1:6274?MCP_INSPECTOR_API_TOKEN=...
 | الصفحة ما فتحت | Inspector لسا يحمّل، أو المتصفح ما انفتح | انتظري، أو خذي الرابط من `.logs\mcp-inspector.log` |
 | المفتاح ما يصير Connected | الـ MCP Server ما انبنى، أو فيه خطأ | شغّلي `build-mcp.bat` وشوفي `.logs\mcp-build.log` |
 | `address already in use` | فيه API شغال من قبل | سكّري النافذة القديمة، أو لا تشغّلين `start-api` و `start-dev` مع بعض |
+| البناء يفشل: `The file is locked by: "ProductCatalog.McpServer"` | نسخة قديمة من الـ MCP Server لسا شغالة وماسكة الملف | سكّري نافذة `mcp-inspector`، أو من Task Manager سوي End task لـ ProductCatalog.McpServer، وبعدها ابني من جديد |
 
 ---
 

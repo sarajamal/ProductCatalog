@@ -6,3 +6,4 @@
 | GAP-002 | Medium | `PUT /api/products/{id}` needs the full product; `update_stock` must read then write (race possible). | Add `PATCH .../stock` (ProductCatalogApi ENH-003). | Open |
 | GAP-003 | Low | API depends on ProductCatalogApi GAP-001 (EF Tools version) for a clean CI build. | Fix in API first. | Open |
 | GAP-004 | Low | `ModelContextProtocol` C# SDK version to pin. | Pinned to stable 2.4.0 in phase 2. | Closed |
+| GAP-005 | Low | `get_products_by_category.category` is `string?`, so its JSON schema type is `["string","null"]`. MCP Inspector warns this is less portable (some clients accept only one type). | Change to `string category = ""` (plain optional string) and re-check the Inspector warning. | Open |
