@@ -101,7 +101,7 @@ public static class CatalogReadTools
 
     // ---- helpers ----
 
-    private static object ToView(Product p) => new
+    internal static object ToView(Product p) => new
     {
         p.ProductId,
         p.ProductName,
@@ -111,9 +111,9 @@ public static class CatalogReadTools
         p.Stock
     };
 
-    private static string Serialize(object value) => JsonSerializer.Serialize(value, Json);
+    internal static string Serialize(object value) => JsonSerializer.Serialize(value, Json);
 
-    private static async Task<string> Run(ProductCatalogClient api, Func<Task<string>> action)
+    internal static async Task<string> Run(ProductCatalogClient api, Func<Task<string>> action)
     {
         try
         {

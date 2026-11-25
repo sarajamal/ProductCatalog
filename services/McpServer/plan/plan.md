@@ -4,8 +4,8 @@
 |---|---|---|---|
 | 1 | Repository structure and Git | Done (branch protection still to enable) | `main` (initial commit) |
 | 2 | MCP Server — read tools | Done (2026-11-25) | `feature/mcp-read-tools` |
-| 3 | Connect to Claude Desktop | Planned | `feature/mcp-claude-desktop` |
-| 4 | MCP Server — write tools | Planned | `feature/mcp-write-tools` |
+| 3 | Connect to Claude Desktop | Done (2026-11-25) | `feature/mcp-read-tools` |
+| 4 | MCP Server — write tools | Done (2026-11-25), Angular check pending | `feature/mcp-write-tools` |
 | 5 | Unit tests (xUnit) | Planned | `feature/mcp-unit-tests` |
 | 6 | Documentation | Planned | `kb/mcp-docs` |
 
@@ -36,17 +36,17 @@
 **Done when:** all five tools return real data from the running API in MCP Inspector.
 
 ## Phase 3 — Connect to Claude Desktop
-- [ ] Add server to `%APPDATA%\Claude\claude_desktop_config.json` (see bootstrap)
-- [ ] Restart Claude Desktop, confirm tools appear
-- [ ] Ask 5 real questions; save screenshots in `evidence/`
+- [x] Add server to Claude Desktop config with `scripts\setup-claude-mcp.bat` (the Store app reads `%LOCALAPPDATA%\Claude-Data\<package>\claude_desktop_config.json`)
+- [x] Restart Claude Desktop fully, confirm tools appear
+- [x] Ask real questions (QA-302); screenshots still to add in `evidence/`
 
 **Done when:** Claude answers catalog questions using the tools.
 
 ## Phase 4 — Write tools
-- [ ] `create_product` (validation: name, price > 0, stock > 0, category exists)
-- [ ] `update_stock` (GET product → set stock → PUT)
-- [ ] `low_stock_report` (threshold, default 5)
-- [ ] Optional API support endpoints (ENH-001..003 in ProductCatalogApi)
+- [x] `create_product` (validation: name, price > 0, stock > 0, category exists by id or name, no duplicate name)
+- [x] `update_stock` (GET product → set stock → PUT; stock ≥ 0)
+- [x] `low_stock_report` (threshold, default 20 = the Angular red-alert rule)
+- [ ] Optional API support endpoints (ENH-001..003 in ProductCatalogApi) — not needed, existing POST/PUT used
 
 **Done when:** Claude can add a product and update stock, visible in the Angular UI.
 
