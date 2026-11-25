@@ -59,6 +59,7 @@ See `src/ProductCatalogApi/appsettings.Development.example.json` for the expecte
 | `scripts\run-tests.bat` | Runs the Angular unit tests; Karma opens Chrome with the results |
 | `scripts\build-mcp.bat` | Builds the MCP Server (log in `.logs\mcp-build.log`) |
 | `scripts\test-mcp.bat` | Opens the MCP Inspector to try the MCP tools (start the API first) |
+| `scripts\setup-claude-mcp.bat` | Adds the MCP Server to Claude Desktop's config, then restart Claude |
 
 - API: http://localhost:5233 — Swagger: http://localhost:5233/swagger
 - Client: http://localhost:4200
