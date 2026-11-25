@@ -2,12 +2,12 @@
 
 | Field | Value |
 |---|---|
-| Source | `src/McpServer` (created in phase 2) |
+| Source | `src/McpServer` |
 | Stack | .NET 8, C#, Model Context Protocol C# SDK (`ModelContextProtocol` NuGet), stdio transport |
 | Talks to | ProductCatalogApi over HTTP (http://localhost:5233) |
 | Consumer | Claude Desktop (and any MCP client) |
 | Owner | @sarajamal |
-| Status | Planned — phase 1 in progress |
+| Status | Phase 2 done (read tools); phase 3 next |
 
 ## What it is
 A small C# console app that exposes the ProductCatalog API as **MCP tools**, so Claude can answer questions like "which products are low on stock?" or "add a product" by calling the real API.
