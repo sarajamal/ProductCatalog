@@ -10,7 +10,8 @@ The repository is organized as a **Knowledge Base**: every service has its own S
 ProductCatalog/
 ├── src/
 │   ├── ProductCatalogApi/         # ASP.NET Core Web API (.NET 8, EF Core, SQL Server)
-│   └── product-catalog-client/    # Angular 18 standalone client
+│   ├── product-catalog-client/    # Angular 18 standalone client
+│   └── McpServer/                 # C# MCP Server: Claude uses the API as tools
 ├── tests/                         # Unit tests (xUnit) — MCP phase 5
 ├── services/                      # Knowledge base per service
 │   ├── ProductCatalogApi/
@@ -56,6 +57,9 @@ See `src/ProductCatalogApi/appsettings.Development.example.json` for the expecte
 | `scripts\open-in-chrome.bat` | Opens http://localhost:4200 |
 | `scripts\open-in-vscode.bat` | Opens the repo root in VS Code |
 | `scripts\run-tests.bat` | Runs the Angular unit tests; Karma opens Chrome with the results |
+| `scripts\build-mcp.bat` | Builds the MCP Server (log in `.logs\mcp-build.log`) |
+| `scripts\test-mcp.bat` | Opens the MCP Inspector to try the MCP tools (start the API first) |
+| `scripts\setup-claude-mcp.bat` | Adds the MCP Server to Claude Desktop's config, then restart Claude |
 
 - API: http://localhost:5233 — Swagger: http://localhost:5233/swagger
 - Client: http://localhost:4200

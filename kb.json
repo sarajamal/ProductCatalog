@@ -4,24 +4,53 @@
   "repository": "https://github.com/sarajamal/ProductCatalog",
   "defaultBranch": "main",
   "currentPhase": {
-    "number": 1,
-    "name": "Repository structure and Git",
-    "status": "in-progress",
+    "number": 3,
+    "name": "Connect MCP Server to Claude Desktop",
+    "status": "planned",
     "plan": "services/McpServer/plan/plan.md"
   },
   "phases": [
-    { "number": 1, "name": "Repository structure and Git", "status": "in-progress" },
-    { "number": 2, "name": "MCP Server - read tools", "status": "planned" },
-    { "number": 3, "name": "Connect MCP Server to Claude Desktop", "status": "planned" },
-    { "number": 4, "name": "MCP Server - write tools", "status": "planned" },
-    { "number": 5, "name": "Unit tests (xUnit)", "status": "planned" },
-    { "number": 6, "name": "Documentation", "status": "planned" }
+    {
+      "number": 1,
+      "name": "Repository structure and Git",
+      "status": "done"
+    },
+    {
+      "number": 2,
+      "name": "MCP Server - read tools",
+      "status": "done"
+    },
+    {
+      "number": 3,
+      "name": "Connect MCP Server to Claude Desktop",
+      "status": "planned"
+    },
+    {
+      "number": 4,
+      "name": "MCP Server - write tools",
+      "status": "planned"
+    },
+    {
+      "number": 5,
+      "name": "Unit tests (xUnit)",
+      "status": "planned"
+    },
+    {
+      "number": 6,
+      "name": "Documentation",
+      "status": "planned"
+    }
   ],
   "projects": [
     {
       "id": "ProductCatalogApi",
       "type": "service",
-      "stack": [".NET 8", "ASP.NET Core Web API", "EF Core 8", "SQL Server"],
+      "stack": [
+        ".NET 8",
+        "ASP.NET Core Web API",
+        "EF Core 8",
+        "SQL Server"
+      ],
       "source": "src/ProductCatalogApi",
       "kb": "services/ProductCatalogApi",
       "url": "http://localhost:5233",
@@ -31,7 +60,10 @@
     {
       "id": "product-catalog-client",
       "type": "frontend",
-      "stack": ["Angular 18", "TypeScript"],
+      "stack": [
+        "Angular 18",
+        "TypeScript"
+      ],
       "source": "src/product-catalog-client",
       "kb": "services/ProductCatalogApi",
       "url": "http://localhost:4200",
@@ -41,11 +73,15 @@
     {
       "id": "McpServer",
       "type": "service",
-      "stack": [".NET 8", "C#", "Model Context Protocol"],
+      "stack": [
+        ".NET 8",
+        "C#",
+        "Model Context Protocol"
+      ],
       "source": "src/McpServer",
       "kb": "services/McpServer",
       "owner": "@sarajamal",
-      "status": "planned"
+      "status": "active"
     }
   ],
   "folders": {

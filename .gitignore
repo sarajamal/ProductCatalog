@@ -27,3 +27,6 @@ Desktop.ini
 
 # ---- Local backups ----
 .backup/
+
+# ---- Local logs from scripts ----
+.logs/

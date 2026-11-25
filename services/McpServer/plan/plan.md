@@ -2,8 +2,8 @@
 
 | # | Phase | Status | Branch |
 |---|---|---|---|
-| 1 | Repository structure and Git | In progress | `main` (initial commit) |
-| 2 | MCP Server — read tools | Planned | `feature/mcp-read-tools` |
+| 1 | Repository structure and Git | Done (branch protection still to enable) | `main` (initial commit) |
+| 2 | MCP Server — read tools | Done (2026-11-25) | `feature/mcp-read-tools` |
 | 3 | Connect to Claude Desktop | Planned | `feature/mcp-claude-desktop` |
 | 4 | MCP Server — write tools | Planned | `feature/mcp-write-tools` |
 | 5 | Unit tests (xUnit) | Planned | `feature/mcp-unit-tests` |
@@ -26,12 +26,12 @@
 
 ## Phase 2 — MCP Server (read tools)
 **Goal:** a C# MCP server exposing read-only tools.
-- [ ] `dotnet new console -n McpServer -o src/McpServer` and add to `ProductCatalog.sln`
-- [ ] Packages: `ModelContextProtocol` (prerelease), `Microsoft.Extensions.Hosting`, `Microsoft.Extensions.Http`
-- [ ] `Program.cs`: Host + `AddMcpServer().WithStdioServerTransport().WithToolsFromAssembly()`; logging to stderr
-- [ ] `ProductCatalogClient` (typed HttpClient, base URL from config)
-- [ ] Tools: `list_categories`, `list_products`, `get_product`, `get_products_by_category`, `search_products`
-- [ ] Test with MCP Inspector (`npx @modelcontextprotocol/inspector dotnet run --project src/McpServer`)
+- [x] `src/McpServer` console project (net8.0) added to `ProductCatalog.sln`
+- [x] Packages: `ModelContextProtocol` 2.4.0 (stable), `Microsoft.Extensions.Hosting`, `Microsoft.Extensions.Http`
+- [x] `Program.cs`: Host + `AddMcpServer().WithStdioServerTransport().WithToolsFromAssembly()`; logging to stderr
+- [x] `ProductCatalogClient` (typed HttpClient, base URL from config)
+- [x] Tools: `list_categories`, `list_products`, `get_product`, `get_products_by_category`, `search_products`
+- [x] Test with MCP Inspector (`scripts\test-mcp.bat`)
 
 **Done when:** all five tools return real data from the running API in MCP Inspector.
 
