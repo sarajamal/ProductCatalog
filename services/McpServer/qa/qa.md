@@ -30,5 +30,5 @@
 | QA-403b | `update_stock` id 999 | "not found", nothing changed | Pass | — |
 | QA-404 | `low_stock_report` default (20) | stock < 20, lowest first, count per category | Pass — 3 products, Electronics 3 | — |
 | QA-405 | Tool call with API stopped | readable message | Pass — "Could not reach ProductCatalogApi ... scripts\start-api.bat" (also closes QA-207) | — |
-| QA-406 | New product visible in Angular UI | listed on products page | Not run yet | — |
+| QA-406 | New product visible in Angular UI | listed on products page | Pass (2026-11-27) — "MCP Test Cable, Electronics, 10.00, 25" on http://localhost:4200 in Chrome, sorted by stock, no low-stock badge (25 ≥ 20) | `evidence/20261127-QA-406-angular-mcp-test-cable.jpg` |
 | QA-407 | Build while Claude Desktop runs the server | build succeeds | Pass — build-mcp.bat now stops the running ProductCatalog.McpServer.exe first | — |

@@ -5,7 +5,7 @@
 | 1 | Repository structure and Git | Done (branch protection still to enable) | `main` (initial commit) |
 | 2 | MCP Server — read tools | Done (2026-11-25) | `feature/mcp-read-tools` |
 | 3 | Connect to Claude Desktop | Done (2026-11-25) | `feature/mcp-read-tools` |
-| 4 | MCP Server — write tools | Done (2026-11-25), Angular check pending | `feature/mcp-write-tools` |
+| 4 | MCP Server — write tools | Done (2026-11-25), Angular check passed 2026-11-27 (QA-406) | `feature/mcp-write-tools` |
 | 5 | Unit tests (xUnit) | Planned | `feature/mcp-unit-tests` |
 | 6 | Documentation | Planned | `kb/mcp-docs` |
 
