@@ -32,3 +32,16 @@
 | QA-405 | Tool call with API stopped | readable message | Pass — "Could not reach ProductCatalogApi ... scripts\start-api.bat" (also closes QA-207) | — |
 | QA-406 | New product visible in Angular UI | listed on products page | Pass (2026-11-27) — "MCP Test Cable, Electronics, 10.00, 25" on http://localhost:4200 in Chrome, sorted by stock, no low-stock badge (25 ≥ 20) | `evidence/20261127-QA-406-angular-mcp-test-cable.jpg` |
 | QA-407 | Build while Claude Desktop runs the server | build succeeds | Pass — build-mcp.bat now stops the running ProductCatalog.McpServer.exe first | — |
+
+## Phase 5 — unit tests (`tests/McpServer.Tests`, xUnit, fake API)
+| ID | Case | Expected | Result | Evidence |
+|---|---|---|---|---|
+| QA-501 | `ProductCatalogClient` (6 tests) | 404 → null; 400/404 bodies → one readable line; PUT sends product without its Category object | Pass | `evidence/20261127-phase5-dotnet-test.txt` |
+| QA-502 | `list_categories`, `list_products` | all categories; products lowest stock first | Pass | same |
+| QA-503 | `get_product`, `get_products_by_category` | found / not found; category by id or name in any case, empty = all, unknown lists available, empty category says so | Pass | same |
+| QA-504 | `search_products` | blank asks for text, case-insensitive, no match says so | Pass | same |
+| QA-505 | `create_product` | every validation message at once with no API call; unknown category and duplicate name refused with no POST; valid POST sends trimmed name + category id; API refusal returned | Pass | same |
+| QA-506 | `update_stock` | negative refused with no call; unknown id; same stock sends no PUT; old -> new; low-stock note; API refusal returned | Pass | same |
+| QA-507 | `low_stock_report` | threshold ≤ 0 refused; default 20 lowest first with count per category; custom threshold; none below | Pass | same |
+| QA-508 | API down / slow / 500, all 8 tools | readable message with `scripts\start-api.bat`; timeout message; 500 pinned as GAP-006 | Pass | same |
+| QA-509 | Whole solution, Release (same as CI) | `dotnet test ProductCatalog.sln -c Release` green, 0 warnings | Pass — 48/48 | same |

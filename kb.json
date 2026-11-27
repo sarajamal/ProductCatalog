@@ -4,8 +4,8 @@
   "repository": "https://github.com/sarajamal/ProductCatalog",
   "defaultBranch": "main",
   "currentPhase": {
-    "number": 5,
-    "name": "Unit tests (xUnit)",
+    "number": 6,
+    "name": "Documentation",
     "status": "planned",
     "plan": "services/McpServer/plan/plan.md"
   },
@@ -33,7 +33,7 @@
     {
       "number": 5,
       "name": "Unit tests (xUnit)",
-      "status": "planned"
+      "status": "done"
     },
     {
       "number": 6,
