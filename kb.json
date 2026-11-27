@@ -4,8 +4,8 @@
   "repository": "https://github.com/sarajamal/ProductCatalog",
   "defaultBranch": "main",
   "currentPhase": {
-    "number": 3,
-    "name": "Connect MCP Server to Claude Desktop",
+    "number": 5,
+    "name": "Unit tests (xUnit)",
     "status": "planned",
     "plan": "services/McpServer/plan/plan.md"
   },
@@ -23,12 +23,12 @@
     {
       "number": 3,
       "name": "Connect MCP Server to Claude Desktop",
-      "status": "planned"
+      "status": "done"
     },
     {
       "number": 4,
       "name": "MCP Server - write tools",
-      "status": "planned"
+      "status": "done"
     },
     {
       "number": 5,
