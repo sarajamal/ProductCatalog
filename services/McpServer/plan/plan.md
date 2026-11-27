@@ -6,7 +6,7 @@
 | 2 | MCP Server — read tools | Done (2026-11-25) | `feature/mcp-read-tools` |
 | 3 | Connect to Claude Desktop | Done (2026-11-25) | `feature/mcp-read-tools` |
 | 4 | MCP Server — write tools | Done (2026-11-25), Angular check passed 2026-11-27 (QA-406) | `feature/mcp-write-tools` |
-| 5 | Unit tests (xUnit) | Planned | `feature/mcp-unit-tests` |
+| 5 | Unit tests (xUnit) | Done (2026-11-27), 48 tests green | `feature/mcp-unit-tests` |
 | 6 | Documentation | Planned | `kb/mcp-docs` |
 
 ---
@@ -51,11 +51,12 @@
 **Done when:** Claude can add a product and update stock, visible in the Angular UI.
 
 ## Phase 5 — Unit tests (xUnit)
-- [ ] `tests/McpServer.Tests` (xUnit) added to the solution
-- [ ] Fake `HttpMessageHandler` to simulate API responses (200 / 404 / 400)
-- [ ] Tests for every tool + validation paths
-- [ ] Optional: `tests/ProductCatalogApi.Tests` with EF Core InMemory for controllers
-- [ ] `dotnet test` green in CI
+- [x] `tests/McpServer.Tests` (xUnit) added to the solution (solution folder `tests`)
+- [x] Fake `HttpMessageHandler` (`FakeApiHandler`) to simulate API responses (200 / 201 / 204 / 400 / 404 / 500, API down, timeout) and record every request
+- [x] Tests for every tool + validation paths: 36 test methods, 48 runs (QA-501..509)
+- [ ] Optional: `tests/ProductCatalogApi.Tests` with EF Core InMemory for controllers (later, own PR)
+- [x] `dotnet test` green in CI (the existing CI "Test" step runs the whole solution)
+- Found while testing: GAP-006 (a 500 from the API is reported as "could not reach the API")
 
 **Done when:** CI runs tests on every PR.
 
