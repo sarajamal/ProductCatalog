@@ -11,7 +11,7 @@
 - **الفرونت اند:** تطبيق Angular 18 (standalone) اسمه `product-catalog-client`، موجود في:
   `src/product-catalog-client`
   يشتغل على: http://localhost:4200
-- **MCP Server (مخطط):** خدمة C# تغلّف الـ API عشان Claude يستخدمها — التوثيق في `services/McpServer/`.
+- **MCP Server:** خدمة C# في `src/McpServer` تغلّف الـ API عشان Claude Desktop يستخدمها (أدوات قراءة وكتابة) — التوثيق في `services/McpServer/`.
 - **تشغيل الاثنين معاً:** `scripts/start-dev.bat` يشغّل الباك اند والفرونت اند في نافذتين.
   وفيه أيضاً: `scripts/start-api.bat` و `scripts/open-in-chrome.bat` و `scripts/open-in-vscode.bat`.
 - **قاعدة البيانات:** كلمة المرور / Connection String في user secrets وليست في الملفات
@@ -53,3 +53,17 @@
 - صيغة الـ commit: `feat(Scope): ...` / `fix(Scope): ...` / `kb(Scope): ...` (انظر `standards/commit-convention.md`).
 - لا ترفع أسرار (connection strings, passwords) — استخدم user secrets.
 - ملفات `.bat` تبقى بنهايات أسطر CRLF.
+
+## GitHub: مين يسوي وش (من 2026-11-27)
+
+| الخطوة | مين |
+|---|---|
+| فرع + تعديل + تحقق + commit | Claude |
+| `git push` للفرع (مو `main` أبداً، وبدون force push) | Claude |
+| فتح الـ Pull Request: العنوان والوصف من `.github/pull_request_template.md` (في Chrome لأن `gh` غير مثبّت) | Claude |
+| متابعة الـ CI، وإصلاح أي فشل على نفس الفرع | Claude |
+| **Squash and merge إلى `main`** | **سارة فقط** — Claude لا يدمج أبداً |
+| بعد الدمج: `git switch main` و `git pull` وحذف الفرع المحلي | Claude (بعد ما تقول سارة إنها دمجت) |
+
+- لا ترفع ملفات غير متتبعة ما لها علاقة بالتغيير.
+- أدوات الكتابة في MCP على البيانات الحقيقية تحتاج موافقة صريحة كل مرة.
