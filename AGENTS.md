@@ -26,5 +26,5 @@ The full working agreement (Arabic) is in [CLAUDE.md](CLAUDE.md) — it applies 
 - Never commit secrets. The DB connection string lives in user secrets.
 - Do not change existing behaviour, the database schema or data without explaining and getting approval.
 - Keep `.bat` files with CRLF line endings.
-- GitHub: the agent may push its own branch (never `main`, never force-push), open the PR with the PR template, and fix CI on that branch. **Merging into `main` (Squash and merge) is done only by the owner, never by an agent.**
+- GitHub: the agent may push its own branch (never `main`, never force-push), open the PR with the PR template, and fix CI on that branch. **Merging into `main` (Squash and merge) needs the owner's explicit yes for each PR:** first write what changed, what will happen after the merge and the CI status, ask "merge?", and merge only after a clear yes.
 - After a change: build, run, verify, then update the service KB (`qa/`, `evidence/`, `gaps/`) and report which files changed, what changed, and the verification result.
